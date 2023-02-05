@@ -7,7 +7,6 @@
     <title>Khao sat</title>
 </head>
 <body>
-    <font face="Segoe UI">
     <header>
         <center>
             <h1>KHẢO SÁT Ý KIẾN</h1>
@@ -17,13 +16,13 @@
     </header>
     <main>
         <b>Theo bạn kỹ năng nào là cần thiết đối với bạn nhất trong số kỹ năng sau:</b>
-        <form action="" method="get">
+        <form>
             <fieldset>
                 <legend>Kỹ năng mềm cần có</legend>
                 <center>
                     <table>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="3">
                                 <div>
                                     <input type="checkbox" name="datMucTieu" value="1co"> Kỹ năng đặt mục tiêu <br>
                                     <input type="checkbox" name="sangTao" value="2co"> Sáng tạo trong công việc <br>
@@ -43,45 +42,55 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">Ý kiến khác: <textarea name="ykk" cols="80" rows="3"></textarea></td>
+                            <td colspan="2">Ý kiến khác: 
+                                <textarea name="ykk" cols="80" rows="3"></textarea>
+                            </td>
                         </tr>
                     </table>
                 </center>
             </fieldset>
+            <br/>
             <fieldset>
                 <legend>Thông tin cá nhân</legend>
                 <table width="100%">
                     <tr>
                         <td>Họ và tên:</td>
-                        <td><input type="text" placeholder="Họ Tên" name="name"></td>
-                        <td rowspan="3" dir="rtl"><img src="../../Pictures/success.png" alt="anh" width="100px" height="100px"></td>
+                        <td>
+                            <input type="text" placeholder="" name="name">
+                        </td>
+                        <td rowspan="3">
+                            <img src="../../Pictures/success.png" alt="anh" width="100px" height="100px">
+                        </td>
                     </tr>
                     <tr>
                         <td>Độ tuổi:</td>
                         <td>
-                            <select name="DoTuoi">
+                            <select name="age">
                                 <option value="1825">18-25</option>
                                 <option value="2540">25-40</option>
+                                <option value="other">Trên 40 tuổi</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>Giới tính:</td>
-                        <td><input type="radio" name="sex" value="Nam"> Nam
+                        <td>
+                            <input type="radio" name="sex" value="Nam"> Nam
                             <input type="radio" name="sex" value="Nu"> Nữ
                         </td>
                     </tr>
                 </table>
             </fieldset>
-            <article dir="rtl">
-                <input type="submit" value="Gửi khảo sát"/>
-                <input type="reset" value="Làm lại"/>
-            </article>
+            <section dir="rtl">
+                <br/>
+                <input type="submit" value="Gửi khảo sát">
+                <input type="reset" value="Làm lại">
+            </section>
         </form>
     </main>
+    <br/>
     <footer>
         <center><p>Cảm ơn bạn đã khảo sát!</p></center>
     </footer>
-    </font>
 </body>
 </html>
