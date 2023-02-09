@@ -43,6 +43,7 @@ html {
 .nav-drop:hover {
     background: aquamarine;
 }
+/* Cho danh sách của thanh điều hướng ẩn đi bằng display: none và hiện lên khi di chuột vào :hover display:block */
 .nav-list {
     padding: 0;
     position: relative;
