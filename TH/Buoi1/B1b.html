@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khao sat</title>
+</head>
+<body>
+    <header>
+        <center>
+            <h1>KHẢO SÁT Ý KIẾN</h1>
+            <p>V/V: Các kỹ năng cần có đối với sinh viên để thành công trong công việc</p>
+            <hr width="600px"/>
+        </center>
+    </header>
+    <main>
+        <b>Theo bạn kỹ năng nào là cần thiết đối với bạn nhất trong số kỹ năng sau:</b>
+        <form>
+            <fieldset>
+                <legend>Kỹ năng mềm cần có</legend>
+                <center>
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <div>
+                                    <input type="checkbox" name="datMucTieu" value="1co"> Kỹ năng đặt mục tiêu <br>
+                                    <input type="checkbox" name="sangTao" value="2co"> Sáng tạo trong công việc <br>
+                                    <input type="checkbox" name="langNghe" value="3co"> Biết lắng nghe và học tập những lời phê bình<br>
+                                    <input type="checkbox" name="giaoTiep" value="4co"> Giao tiếp hiệu quả <br>
+                                    <input type="checkbox" name="tuTin" value="5co"> Tự tin, năng động và biết lôi kéo người khác <br>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <input type="checkbox" name="dongDoi" value="6co"> Kỹ năng làm việc đồng đội <br>
+                                    <input type="checkbox" name="khamPha" value="7co"> Kỹ năng khám phá và lãnh đạo bản thân <br>
+                                    <input type="checkbox" name="toChuc" value="8co"> Kỹ năng tổ chức công việc và quản lý thời gian <br>
+                                    <input type="checkbox" name="quyetDinh" value="9co"> Kỹ năng ra quyết định <br>
+                                    <input type="checkbox" name="giaiQuyet" value="10co"> Kỹ năng giải quyết vấn đề <br>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Ý kiến khác: 
+                                <textarea name="ykk" cols="80" rows="3"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <legend>Thông tin cá nhân</legend>
+                <table width="100%">
+                    <tr>
+                        <td>Họ và tên:</td>
+                        <td>
+                            <input type="text" placeholder="" name="name">
+                        </td>
+                        <td rowspan="3">
+                            <img src="../../Pictures/success.png" alt="anh" width="100px" height="100px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Độ tuổi:</td>
+                        <td>
+                            <select name="age">
+                                <option value="1825">18-25</option>
+                                <option value="2540">25-40</option>
+                                <option value="other">Trên 40 tuổi</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Giới tính:</td>
+                        <td>
+                            <input type="radio" name="sex" value="Nam"> Nam
+                            <input type="radio" name="sex" value="Nu"> Nữ
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <section dir="rtl">
+                <br/>
+                <input type="submit" value="Gửi khảo sát">
+                <input type="reset" value="Làm lại">
+            </section>
+        </form>
+    </main>
+    <br/>
+    <footer>
+        <center><p>Cảm ơn bạn đã khảo sát!</p></center>
+    </footer>
+</body>
+</html>

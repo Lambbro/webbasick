@@ -1,0 +1,118 @@
+/* *{} là CSS cho toàn bộ thành phần trong html */
+* {
+    box-sizing: border-box; /* Đưa các thành phần với tổng width và height = width height của thành phần + padding + margin */
+}
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;/* Đổi font chữ của file html */
+}
+/* CSS cho phần header */
+
+/* padding là thuộc tính làm dày phần nền của một thành phần (phần padding vẫn thuộc về thành phần đó)
+margin là thuộc tính tạo khoảng trống giữa các thành phần (phần margin không thuộc về thành phần đó) */
+#header {
+    background:linear-gradient(270deg, rgba(12, 240, 222, 1) 0%, rgba(1, 1, 217, 1) 100%);
+    padding: 15px;
+    text-transform: uppercase;
+}
+/* This is content css*/
+#content {
+    /* flexbox là dạng hiển thị theo dạng ngang
+    tham khảo ở: https://viblo.asia/p/tim-hieu-ve-flexbox-trong-css-gGJ59Qjj5X2 */
+    display: flex;
+    width: 100%;
+}
+/* Gridview 12 cột mỗi bên 3 cột ở giữa 6 cột
+=> Cột 1 bên = 1/2 cột giữa => width 2 bên = 50% width giữa 100% */
+/* width 100% sẽ là chiếm chiều rộng toàn bộ bằng phần tử chứa nó
+Với flexbox thì nó sẽ chia ra theo tổng số phần tử nữa nên width 50% nghĩa là 25% của cái tổng vì 25+25+50 = 100% */
+
+/* CSS cho thanh sidebar */
+.sidebar {
+    width: 50%;
+}
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar li {
+    background:linear-gradient(270deg, rgba(12, 240, 222, 1) 0%, rgba(1, 1, 217, 1) 100%);
+    padding: 8px;
+    margin: 8px 0;
+}
+.sidebar li:hover {
+    cursor: pointer;
+    background: #0099cc;
+}
+/* CSS cho nội dung chính */
+.main-content {
+    width: 100%;
+    margin: 0 20px;
+}
+.title {
+    color: #0099cc;
+}
+.describe {
+    margin: 0;
+}
+/* CSS cho bên phải */
+.right {
+    width: 50%;
+    margin-top: 8px;
+}
+.bg-image {
+    padding: 12px;
+    background-color: rgba(12, 240, 222, 1);
+    text-align: center;
+}
+.img { /* Kích thước ảnh có chiều rộng = thẻ div class bg-image để có thể co giãn được */
+    width: 100%;
+}
+
+.detail {
+    text-decoration: none;
+    direction: rtl;
+    color: gray;
+}
+.detail:hover {
+    color: #0099cc;
+}
+
+/* CSS footer*/
+#footer {
+    background:linear-gradient(270deg, rgba(12, 240, 222, 1) 0%, rgba(1, 1, 217, 1) 100%);
+    text-align: center;
+    padding: 8px;
+    margin-top: 16px;
+}
+
+/* Responsive (đảm bảo web đa phương tiện)
+tham khảo: https://viblo.asia/p/gioi-thieu-ve-media-css-trong-responsive-4dbZNDEL5YM */
+@media only screen and (max-width: 768px) {
+    #content {
+        display: block;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .right {
+        width: 100%;
+    }
+    .main-content {
+        padding-right: 30px;
+    }
+}
+
+@media only print {
+    * {
+        background-color: #fff;
+        color: #000;
+    }
+    #header {
+        text-align: center;
+    }
+    .title {
+        color: #000;
+    }
+
+}
