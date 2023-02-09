@@ -1,3 +1,2 @@
 # webbasick
-Pictures is image file
-TH is html and css file
+Pictures is image file and TH is html and css file
