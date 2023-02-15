@@ -13,20 +13,22 @@ html {
 
 #header {
     padding: 1px 8px;
-    background:green;
+    background: rgb(0, 85, 200);
+    color: #fff;
     
 }
 #content::after {
-    /* Do có thành phần sử dụng float nên dùng cái này để ngăn các phần khác chiếm lấy khoảng trống background của thành phần này (xóa thử để biết thêm chi tiết)*/
+    /* Do có thành phần sử dụng float nên dùng cái này (clear: both) để ngăn các phần khác chiếm lấy khoảng trống background của thành phần này (xóa thử để biết thêm chi tiết)*/
     background-color: white;
     content: "";
     clear: both;
     display: block;
 }
 #navbar {
-    background: rgb(47, 155, 74);
+    background: rgb(54, 129, 214);
     width: 100%;
     height: 60px;
+    color: #fff;
 }
 .nav-menu {
     width: 80%;
@@ -41,7 +43,7 @@ html {
 }
 /* :hover là khi người dùng trỏ chuột vào thành phần này */
 .nav-drop:hover {
-    background: aquamarine;
+    background: rgb(0, 185, 170);
 }
 /* Cho danh sách của thanh điều hướng ẩn đi bằng display: none và hiện lên khi di chuột vào :hover display:block */
 .nav-list {
@@ -61,26 +63,33 @@ html {
     width: 100%;
     text-align: center;
     padding: 15px 0;
-    background-color: aquamarine;
+    background-color: rgb(0, 120, 136);
 }
 .nav-item:hover {
-    background-color: rgb(68, 116, 36);
+    background-color: rgb(0, 118, 165);
 }
 
 .search-bar {
     margin: 15px;
 }
+.border-item {
+  border: 3px solid aqua; 
+  margin: 10px;
+}
+.border-item p {
+  text-align: center;
+  margin: 0;
+}
 .list-item {
-    width: 90%;
+    width: 100%;
     padding: 10px;
-    margin: 10px;
-    border: 3px solid aqua;
 }
 #footer {
-    background:green;
+    background: rgb(0, 85, 200);
     margin-top: 8px;
     text-align: center;
     padding: 8px;
+    color: #fff;
 }
 
 #header h1:hover, .search-btn:hover, .list-item:hover, .nav-item:hover, .nav-drop:hover {
@@ -149,6 +158,9 @@ html {
         min-width: 200px;
     }
     .nav-drop h4 {
-        background-color: rgb(47, 155, 74);
+        background-color: rgb(54, 129, 214);
     }
+    .list-item {
+      padding: 25px;
+  }
 }
