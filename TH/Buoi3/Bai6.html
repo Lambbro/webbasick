@@ -8,12 +8,15 @@
 </head>
 <body>
     <div id="bai6">
-        <center><form id="form" action="" method="get" style="border: 1px solid #333; width: fit-content;">
+        <center>
+        <div style="width: fit-content;">
+        <form id="form" action="" method="get">
+            <fieldset>
             <table>
                 <tr>
                     <td>Ngày sinh</td>
                     <td>
-                        <input type="text" id="txtBirth">
+                        <input type="date" id="txtBirth">
                     </td>
                 </tr>
                 <tr>
@@ -30,7 +33,10 @@
                     </td>
                 </tr>
             </table>
-        </form></center>
+            </fieldset>
+        </form>
+        </div>
+        </center>
     </div>
 
     <script>
@@ -40,35 +46,28 @@
         }
 
         function check() {
-            let birth = document.getElementById("txtBirth");
-            let dob = birth.value;
+            let birth = document.getElementById("txtBirth").value;
             let output = "", zodiac = document.getElementById("txtZodiac");
-            if (dob === "") {birth.focus();}
 
-            let arrDob = dob.split("/");
-            let day = parseInt(arrDob[0]);
+            let arrDob = birth.split("-");
+            let day = parseInt(arrDob[2]);
             let month = parseInt(arrDob[1]);
 
-            if (month > 0 && month < 13 && day > 0 && day <= 31) {
-                switch(month) {
-                    case 1: if(day>19) output = "Bảo Bình"; else output = "Ma Kết"; break;
-                    case 2: if(day>18) output = "Song Ngư"; else output = "Bảo Bình"; break;
-                    case 3: if(day>20) output = "Bạch Dương"; else output = "Song Ngư";break;
-                    case 4: if(day>20) output = "Kim Ngư"; else output = "Bạch Dương"; break;
-                    case 5: if(day>20) output = "Song Tử"; else output = "Kim Ngư"; break;
-                    case 6: if(day>21) output = "Cự Giải"; else output = "Song Tử"; break;
-                    case 7: if(day>22) output = "Sư Tử"; else output = "Cự Giải"; break;
-                    case 8: if(day>22) output = "Xử Nữ"; else output="Sư Tử"; break;
-                    case 9: if(day>22) output = "Thiên Bình"; else output="Xử Nữ";break;
-                    case 10: if(day>23) output = "Bọ Cạp"; else output="Thiên Bình"; break;
-                    case 11: if(day>22) output = "Nhân Mã"; else output = "Bọ Cạp"; break;
-                    case 12: if(day>21) output = "Ma Kết"; else output = "Nhân Mã"; break;
-                }
-                zodiac.setAttribute("value", output);
+            switch(month) {
+                case 1: if(day>19) output = "Bảo Bình"; else output = "Ma Kết"; break;
+                case 2: if(day>18) output = "Song Ngư"; else output = "Bảo Bình"; break;
+                case 3: if(day>20) output = "Bạch Dương"; else output = "Song Ngư";break;
+                case 4: if(day>20) output = "Kim Ngư"; else output = "Bạch Dương"; break;
+                case 5: if(day>20) output = "Song Tử"; else output = "Kim Ngư"; break;
+                case 6: if(day>21) output = "Cự Giải"; else output = "Song Tử"; break;
+                case 7: if(day>22) output = "Sư Tử"; else output = "Cự Giải"; break;
+                case 8: if(day>22) output = "Xử Nữ"; else output="Sư Tử"; break;
+                case 9: if(day>22) output = "Thiên Bình"; else output="Xử Nữ";break;
+                case 10: if(day>23) output = "Bọ Cạp"; else output="Thiên Bình"; break;
+                case 11: if(day>22) output = "Nhân Mã"; else output = "Bọ Cạp"; break;
+                case 12: if(day>21) output = "Ma Kết"; else output = "Nhân Mã"; break;
             }
-            else {
-                alert ("Invalid date");
-            }
+            zodiac.setAttribute("value", output);
         }
     </script>
 </body>
