@@ -9,14 +9,13 @@
 <body>
     <div id="bai6">
         <center>
-        <div style="width: fit-content;">
-        <form id="form" action="" method="get">
+        <form id="form" action="" method="get" style="width: fit-content;">
             <fieldset>
             <table>
                 <tr>
                     <td>Ngày sinh</td>
                     <td>
-                        <input type="date" id="txtBirth">
+                        <input type="date" id="txtBirth"> <!-- bài này sử dụng input type date chọn sẵn ngày tháng năm sinh -->
                     </td>
                 </tr>
                 <tr>
@@ -29,31 +28,31 @@
                     <td></td>
                     <td dir="rtl">
                         <input type="button" value="Xóa" onclick="del()">
-                        <input type="button" value="Xem" onclick="check();">
+                        <input type="button" value="Xem" onclick="check()">
                     </td>
                 </tr>
             </table>
             </fieldset>
         </form>
-        </div>
         </center>
     </div>
 
     <script>
         function del() {
-            document.getElementById("form").reset();
-            document.getElementById("txtZodiac").value="";
+            document.getElementById("form").reset();//reset form
+            document.getElementById("txtZodiac").value="";//set lại value của thẻ = rỗng
         }
 
         function check() {
-            let birth = document.getElementById("txtBirth").value;
-            let output = "", zodiac = document.getElementById("txtZodiac");
+            let birth = document.getElementById("txtBirth").value;//lấy giá trị ngày tháng nhập vào trả về dưới dạng yyyy-mm-dd
+            let output = "";//tạo biến rỗng để tí nữa lấy kết quả gán vào
+            let zodiac = document.getElementById("txtZodiac");//lấy thẻ hiển thị kết quả
 
-            let arrDob = birth.split("-");
-            let day = parseInt(arrDob[2]);
-            let month = parseInt(arrDob[1]);
+            let arrDob = birth.split("-"); // chia chuỗi thành mảng 3 phần tử {yyyy, mm, dd}
+            let day = parseInt(arrDob[2]);//gán ngày và đưa từ dạng string về int
+            let month = parseInt(arrDob[1]);//gán tháng và đưa từ dạng string về int
 
-            switch(month) {
+            switch(month) {//check ngày theo tháng và gán vào biến rỗng nãy tạo
                 case 1: if(day>19) output = "Bảo Bình"; else output = "Ma Kết"; break;
                 case 2: if(day>18) output = "Song Ngư"; else output = "Bảo Bình"; break;
                 case 3: if(day>20) output = "Bạch Dương"; else output = "Song Ngư";break;
@@ -67,7 +66,7 @@
                 case 11: if(day>22) output = "Nhân Mã"; else output = "Bọ Cạp"; break;
                 case 12: if(day>21) output = "Ma Kết"; else output = "Nhân Mã"; break;
             }
-            zodiac.setAttribute("value", output);
+            zodiac.value=output; //set value của thẻ hiển thị = biến cung hoàng đạo đã gán
         }
     </script>
 </body>

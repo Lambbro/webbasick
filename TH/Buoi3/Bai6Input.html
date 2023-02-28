@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 6</title>
+</head>
+<body>
+    <div id="bai6">
+        <center>
+        <form id="form" action="" method="get" style="width: fit-content;">
+        <fieldset>
+            <table>
+                <tr>
+                    <td>Ngày sinh</td>
+                    <td>
+                        <input type="text" id="txtBirth"><!-- bài này sử dụng input type text cần nhập ngày sinh dưới dạng dd/mm/yyyy -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cung</td>
+                    <td>
+                        <input type="value" id="txtZodiac">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td dir="rtl">
+                        <input type="button" value="Xóa" onclick="del()">
+                        <input type="button" value="Xem" onclick="check();">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+        </center>
+    </div>
+
+    <script>
+        function del() {
+            document.getElementById("form").reset();//reset form
+            document.getElementById("txtZodiac").value="";//set value = rỗng
+        }
+
+        function check() {
+            let birth = document.getElementById("txtBirth");//gán biến cho thẻ để nhập sai còn focus nhập lại
+            let dob = birth.value;//lấy giá trị của thẻ
+            let output = "";//tạo biến rỗng
+            let zodiac = document.getElementById("txtZodiac");//gán biến cho thẻ hiển thị cung hoàng đạo
+            if (dob === "") {birth.focus();}//check giá trị thẻ đc nhập nếu rỗng thì focus nhập lại
+
+            let arrDob = dob.split("/");//dùng hàm split tách 1 chuỗi ở kí tự "/" thành mảng gồm các chuỗi
+            let day = parseInt(arrDob[0]); // gán biến cho ngày tháng năm và đưa từ kiểu dữ liệu string về int (số nguyên)
+            let month = parseInt(arrDob[1]);
+            let year = parseInt(arrDob[2]);
+            if (!(checkValidDate(day, month, year))) {// dùng hàm check ngày hợp lệ (ở đây là nếu ko hợp lệ thì focus nhập lại)
+                birth.focus();
+                return;
+            } else {// nếu hợp lệ thì gán giá trị vào biến output và hiển thị ra màn hình
+                switch(month) {
+                    case 1: if(day>19) output = "Bảo Bình"; else output = "Ma Kết"; break;
+                    case 2: if(day>18) output = "Song Ngư"; else output = "Bảo Bình"; break;
+                    case 3: if(day>20) output = "Bạch Dương"; else output = "Song Ngư";break;
+                    case 4: if(day>20) output = "Kim Ngư"; else output = "Bạch Dương"; break;
+                    case 5: if(day>20) output = "Song Tử"; else output = "Kim Ngư"; break;
+                    case 6: if(day>21) output = "Cự Giải"; else output = "Song Tử"; break;
+                    case 7: if(day>22) output = "Sư Tử"; else output = "Cự Giải"; break;
+                    case 8: if(day>22) output = "Xử Nữ"; else output = "Sư Tử"; break;
+                    case 9: if(day>22) output = "Thiên Bình"; else output = "Xử Nữ";break;
+                    case 10: if(day>23) output = "Bọ Cạp"; else output = "Thiên Bình"; break;
+                    case 11: if(day>22) output = "Nhân Mã"; else output = "Bọ Cạp"; break;
+                    case 12: if(day>21) output = "Ma Kết"; else output = "Nhân Mã"; break;
+                }
+                zodiac.value=output;//hiển thị cung hoàng đạo
+            }
+        }
+
+        function checkValidDate (dd, mm, yy) {//hàm check ngày hợp lệ
+            if (dd < 1 || mm < 1 || mm > 12 || yy < 1) {//nếu ko hợp lệ in ra cảnh cáo nhập sai
+                alert("Type valid date !");
+                return false;
+            }
+            var maxDay;//tạo biến ngày lớn nhất của tháng
+            if (mm == 4 || mm == 6 || mm == 9 || mm == 11) {//tháng có 30 ngày
+                maxDay = 30;
+            } else if (mm == 2) {//tháng 2
+                if (checkLeapYear(yy)) {// check năm nhuận
+                    maxDay = 29;//nhuận
+                } else maxDay = 28;//không nhuận
+            } else maxDay = 31; //các tháng còn lại
+
+            if (dd > maxDay) {//tương tự như trên
+                alert("Type valid date !");
+                return false;
+            }
+            else {//ngày hợp lệ
+                return true;
+            }
+        }
+
+        function checkLeapYear (year) {//check năm nhuận đúng thì trả về true sai thì false
+            if (year % 4 == 0) {
+                if (year % 100 == 0 && year % 400 != 0) {
+                    return false;
+                }
+                else return true;
+            } else return false;
+        }
+    </script>
+</body>
+</html>

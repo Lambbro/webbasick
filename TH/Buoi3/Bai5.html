@@ -15,7 +15,6 @@
 
     .form {
         width: 500px;
-        height: 250px;
         border: 1px solid #333;
         margin: auto;
         padding: 20px;
@@ -29,7 +28,6 @@
     }
     .form-out {
         width: 300px;
-        height: 30px;
         margin: 12px 0;
     }
     .form-btn {
@@ -54,36 +52,37 @@
                 <select id="selecter" type="text" class="form-out"></select>
             </div>
             <div class="form-btn">
-                <input type="button" value="Thực hiện" class="btn" onclick="submitting();">
-                <input type="reset" value="Hủy" class="btn" onclick="cancel();">
+                <input type="button" value="Thực hiện" class="btn" onclick="submitting();"><!-- xử lý sự kiện thêm vào -->
+                <input type="reset" value="Hủy" class="btn" onclick="cancel();"><!-- xử lý sự kiện xóa -->
             </div>
         </form>
     </div>
 </body>
 
 <script>
-    function submitting() {
-        let str1 = document.getElementById('txtInput');
-        let str2 = str1.value;
-        if (str2 == "") {
+    function submitting() {//ko đặt tên hàm là submit vì hàm submit là hàm có sẵn của thẻ form và nó thực hiện chương trình riêng
+        // hàm thực hiện thêm vào danh sách
+        let str1 = document.getElementById('txtInput'); //tạo biến gán với thẻ html thông qua ID tương ứng
+        let str2 = str1.value; //lấy giá trị của thẻ gán với biến
+        if (str2 == "") { // nếu giá trị rỗng thì hiện thông báo và focus vào cái thẻ html cần nhập
             alert (':D');
             str1.focus();
         } else {
-            let strArr = str2.split(",");
+            let strArr = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
             for (i=0; i<strArr.length; i++) {
-                let opt = document.createElement("option");
-                opt.setAttribute("value", strArr[i]);
+                let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
+                opt.setAttribute("value", strArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value ="strArr[i]"></option>
                 let item = document.createTextNode(strArr[i]);
-                opt.appendChild(item);
-                document.getElementById("selecter").appendChild(opt);
+                opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="strArr[i]">strArr[i]</option>
+                document.getElementById("selecter").appendChild(opt);//đưa thẻ vừa tạo vào thẻ <select> tạo thành 1 dropdown list
             }
         }
     }
     const cancel = () => {
         let selecter = document.getElementById("selecter");
-        while (selecter.lastElementChild) {
-        selecter.removeChild(selecter.lastElementChild);
-    }
+        while (selecter.lastElementChild) { //selecter.lastElementChild là hàm boolean return true khi thẻ <select> còn thẻ con bên trong
+        selecter.removeChild(selecter.lastElementChild);//remove từng phần tử con của thẻ <select>
+        }
     }
 </script>
 
