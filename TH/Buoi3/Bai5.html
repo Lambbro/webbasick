@@ -60,6 +60,7 @@
 </body>
 
 <script>
+    var strArr=[];//tạo ra mảng lưu trữ biến global
     function submitting() {//ko đặt tên hàm là submit vì hàm submit là hàm có sẵn của thẻ form và nó thực hiện chương trình riêng
         // hàm thực hiện thêm vào danh sách
         let str1 = document.getElementById('txtInput'); //tạo biến gán với thẻ html thông qua ID tương ứng
@@ -68,21 +69,30 @@
             alert (':D');
             str1.focus();
         } else {
-            let arrs = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
-            let strArr = arrs.filter((arr) => {return arr!=" ";}//Lọc chuỗi rỗng
-            for (i=0; i<strArr.length; i++) {
+            let strs = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
+            strArr2 = strs.filter((str) => {return str!= " " && str!="";})//tạo 1 mảng loại các dấu cách và hoặc là để trống (" " hoặc "")
+            strArr.push(...strArr2);//thêm vào mảng global (mảng này sẽ tồn tại các phần tử giống nhau)
+            let outputArr = Array.from(new Set(strArr));//tạo 1 mảng khác gồm các phần tử khác nhau từ mảng global
+            del();//xóa toàn bộ output ban đầu để hiển thị lại
+            for (i=0; i<outputArr.length; i++) {
                 let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
-                opt.setAttribute("value", strArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value ="strArr[i]"></option>
-                let item = document.createTextNode(strArr[i]);
-                opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="strArr[i]">strArr[i]</option>
+                opt.setAttribute("value", outputArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value ="outputArr[i]"></option>
+                let item = document.createTextNode(outputArr[i]);
+                opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="outputArr[i]">outputArr[i]</option>
                 document.getElementById("selecter").appendChild(opt);//đưa thẻ vừa tạo vào thẻ <select> tạo thành 1 dropdown list
             }
         }
     }
-    const cancel = () => {
+
+    function cancel() {
+        strArr = [];
+        del();
+    }
+
+    const del = () => {
         let selecter = document.getElementById("selecter");
         while (selecter.lastElementChild) { //selecter.lastElementChild là hàm boolean return true khi thẻ <select> còn thẻ con bên trong
-        selecter.removeChild(selecter.lastElementChild);//remove từng phần tử con của thẻ <select>
+            selecter.removeChild(selecter.lastElementChild);//remove từng phần tử con của thẻ <select>
         }
     }
 </script>
