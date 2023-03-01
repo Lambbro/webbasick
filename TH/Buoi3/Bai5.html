@@ -44,16 +44,17 @@
     <div class="main">
         <form action="" class="form" id="formList">
             <div class="form-group">
-                <p>Chuỗi</p>
+                <p>String</p>
                 <input type="text" id="txtInput" class="form-out">
             </div>
             <div class="form-group">
-                <p>Danh sách</p>
-                <select id="selecter" type="text" class="form-out"></select>
+                <p>List</p>
+                <select id="selecter" type="text" class="form-out" onchange="changeFunc(value)"></select> <!--xử lý sự kiện thông báo khi ấn vào lựa chọn -->
             </div>
+            <div style="text-align: center; color: red;"><p id="announcement" ></p></div>
             <div class="form-btn">
-                <input type="button" value="Thực hiện" class="btn" onclick="submitting();"><!-- xử lý sự kiện thêm vào -->
-                <input type="reset" value="Hủy" class="btn" onclick="cancel();"><!-- xử lý sự kiện xóa -->
+                <input type="button" value="Submit" class="btn" onclick="submitting();"><!-- xử lý sự kiện thêm vào -->
+                <input type="reset" value="Cancel" class="btn" onclick="cancel();"><!-- xử lý sự kiện xóa -->
             </div>
         </form>
     </div>
@@ -64,24 +65,28 @@
     function submitting() {//ko đặt tên hàm là submit vì hàm submit là hàm có sẵn của thẻ form và nó thực hiện chương trình riêng
         // hàm thực hiện thêm vào danh sách
         let str1 = document.getElementById('txtInput'); //tạo biến gán với thẻ html thông qua ID tương ứng
-        let str2 = str1.value; //lấy giá trị của thẻ gán với biến
+        let str2 = str1.value.split(" ").join(""); //lấy giá trị của thẻ gán với biến và loại bỏ hết toàn bộ dấu cách (khoảng trắng)
         if (str2 == "") { // nếu giá trị rỗng thì hiện thông báo và focus vào cái thẻ html cần nhập
-            alert (':D');
+            alert ('<3');
             str1.focus();
         } else {
             let strs = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
-            strArr2 = strs.filter((str) => {return str!= " " && str!="";})//tạo 1 mảng loại các dấu cách và hoặc là để trống (" " hoặc "")
+            strArr2 = strs.filter((str) => {return str!="";})//tạo 1 mảng loại các phần tử rỗng ("")
             strArr.push(...strArr2);//thêm vào mảng global (mảng này sẽ tồn tại các phần tử giống nhau)
             let outputArr = Array.from(new Set(strArr));//tạo 1 mảng khác gồm các phần tử khác nhau từ mảng global
             del();//xóa toàn bộ output ban đầu để hiển thị lại
             for (i=0; i<outputArr.length; i++) {
                 let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
-                opt.setAttribute("value", outputArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value ="outputArr[i]"></option>
+                opt.setAttribute("value", outputArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value="outputArr[i]"></option>
                 let item = document.createTextNode(outputArr[i]);
                 opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="outputArr[i]">outputArr[i]</option>
                 document.getElementById("selecter").appendChild(opt);//đưa thẻ vừa tạo vào thẻ <select> tạo thành 1 dropdown list
             }
         }
+    }
+
+    function changeFunc(value) {//set text thẻ p thành click on giá trị của thẻ option đã thêm  bên trên
+        document.getElementById('announcement').innerText = `Clicked on ${value}`;
     }
 
     function cancel() {
@@ -94,6 +99,7 @@
         while (selecter.lastElementChild) { //selecter.lastElementChild là hàm boolean return true khi thẻ <select> còn thẻ con bên trong
             selecter.removeChild(selecter.lastElementChild);//remove từng phần tử con của thẻ <select>
         }
+        document.getElementById('announcement').innerText = "";
     }
 </script>
 
