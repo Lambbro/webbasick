@@ -69,7 +69,7 @@
             str1.focus();
         } else {
             let arrs = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
-            let strArr = arrs.filter((arr) => {return arr!=" ";}
+            let strArr = arrs.filter((arr) => {return arr!=" ";}//Lọc chuỗi rỗng
             for (i=0; i<strArr.length; i++) {
                 let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
                 opt.setAttribute("value", strArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value ="strArr[i]"></option>
