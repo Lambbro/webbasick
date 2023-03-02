@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 5</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form {
+        width: 500px;
+        border: 1px solid #333;
+        margin: 150px auto;
+        padding: 20px;
+    }
+    .form-group {
+        display: flex;
+    }
+    .form-group p {
+        width: 100px;
+        margin-left: 20px;
+    }
+    .form-out {
+        width: 300px;
+        margin: 12px 0;
+    }
+    .form-btn {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .btn {
+        padding: 4px 12px;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <form action="" class="form" id="formList">
+            <div class="form-group">
+                <p>String</p>
+                <input type="text" id="txtInput" class="form-out">
+            </div>
+            <div class="form-group">
+                <p>List</p>
+                <select id="selecter" type="text" class="form-out" onchange="changeFunc(value)"></select> <!--xử lý sự kiện thông báo khi ấn vào lựa chọn -->
+            </div>
+            <div style="text-align: center; color: red;"><p id="announcement" ></p></div>
+            <div class="form-btn">
+                <input type="button" value="Submit" class="btn" onclick="submitting();"><!-- xử lý sự kiện thêm vào -->
+                <input type="reset" value="Cancel" class="btn" onclick="cancel();"><!-- xử lý sự kiện xóa -->
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    var strArr=[];
+    function submitting() {
+        let str1 = document.getElementById('txtInput');
+        let str2 = str1.value.split(",");
+        for (i=0;i<str2.length;i++) {
+            str2[i]=str2[i].trim();
+        }
+        str2 = str2.join(",");
+        if (str2 == "") {
+            alert ('Invalid string!');
+            str1.focus();
+        } else {
+            let strs = str2.split(",");
+            let strArr2 = strs.filter((str) => {return str!="";})
+            strArr.push(...strArr2);
+            let outputArr = Array.from(new Set(strArr));
+            del();
+            for (i=0; i<outputArr.length; i++) {
+                let opt = document.createElement("option");
+                opt.setAttribute("value", outputArr[i]);
+                let item = document.createTextNode(outputArr[i]);
+                opt.appendChild(item);
+                document.getElementById("selecter").appendChild(opt);
+            }
+        }
+    }
+
+    function changeFunc(value) {
+        document.getElementById('announcement').innerText = `Clicked on ${value}`;
+    }
+
+    function cancel() {
+        strArr = [];
+        del();
+    }
+
+    const del = () => {
+        let selecter = document.getElementById("selecter");
+        while (selecter.lastElementChild) {
+            selecter.removeChild(selecter.lastElementChild);
+        }
+        document.getElementById('announcement').innerText = "";
+    }
+</script>
+
+</html>
