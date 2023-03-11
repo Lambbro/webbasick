@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Bai7.css">
+    <title>Bai 7</title>
+</head>
+<body>
+    <center>
+        <form action="" class="form">
+            <fieldset>
+                    <div class="cpu">
+                        <p>Danh sách Hãng sản xuất CPU</p>
+                        <select name="cpuList" id="cpuList">
+                            <option value="Intel">Intel</option>
+                        </select>
+                    </div>
+                    <div id="hiddenItem">
+                        <p>Hãng</p>
+                        <input type="text" name="cpuInput" id="cpuInput">
+                    </div>
+                    <div>
+                        <div dir="rtl">
+                            <input type="button" value="Cancel" class="btn-click" id="btnCancel" onclick="cancel()">
+                            <input type="button" value="Add" class="btn-click" id="btnAdd" onclick="addCPU()">
+                    </div>
+            </fieldset>
+        </form>
+    </center>
+</body>
+
+<script src="./Bai7.js"></script>
+
+</html>

@@ -1,0 +1,31 @@
+.content {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}
+
+.form {
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.cpu {
+    display: flex;
+    margin: 16px 0;
+}
+.cpu>p, #hiddenItem>p {
+    margin: 0 8px;
+}
+
+#cpuList {
+    min-width: 70px;
+}
+
+.btn-click {
+    min-width: 70px;
+}
+
+#hiddenItem {
+    display: none;
+    margin-bottom: 16px;
+}
