@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Bai8.css">
+    <title>Bai 8</title>
+</head>
+<body>
+    <div class="content">
+        <div class="data">
+            <table id="dataTable" class="center">
+                <tr style="text-align: center;">
+                    <td class="border-column">STT</td>
+                    <td class="border-column">Tên VXL</td>
+                    <td class="border-column">Hãng SX</td>
+                    <td class="border-column">Ngày ra mắt</td>
+                    <td class="border-column">Giá (vnđ)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="addData">
+            <table id="addDataTable" class="center">
+                <tr>
+                    <td>Tên VXL</td>
+                    <td><input type="text" id="cpuName"></td>
+                </tr>
+                <tr>
+                    <td>Hãng</td>
+                    <td><input type="text" id="cpuFirm"></td>
+                </tr>
+                <tr>
+                    <td>Ngày ra mắt</td>
+                    <td><input type="text" id="cpuDate"></td>
+                </tr>
+                <tr>
+                    <td>Giá</td>
+                    <td><input type="text" id="cpuPrice"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td dir="rtl">
+                        <input type="button" value="Hủy" onclick="cancel()">
+                        <input type="button" value="Thêm" onclick="add()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="./Bai8.js"></script>
+</body>
+</html>

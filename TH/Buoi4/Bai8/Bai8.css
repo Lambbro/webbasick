@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+.right {
+    margin-left: auto;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, .border-column {
+    border: 1px solid #333;
+}
+
+.border-column {
+    padding: 4px 16px;
+}
+
+.addData {
+    margin-top: 100px;
+}
+#addDataTable {
+    padding: 12px;
+}
