@@ -1,3 +1,10 @@
+/*
+Ý tưởng:
+Khi ấn thêm của bảng thứ 2 sẽ kiểm tra cả 4 dòng input, đúng dữ liệu nhập thì thêm vào ko thì hiện thông báo
+Khi dữ liệu được nhập đúng thì tạo thêm 1 thẻ <tr> (table row) làm thẻ con của thẻ <table> vào cuối vị trí của các thẻ <tr>
+sau đó tạo các thẻ <td> tương ứng với số cột của bảng, add thêm class để chỉnh css cho thẻ và thêm dữ liệu nhập vào thẻ
+*/
+
 let inpName = document.getElementById("cpuName");
 let inpFirm = document.getElementById("cpuFirm");
 let inpDate = document.getElementById("cpuDate");
@@ -11,7 +18,7 @@ function add() {//Hàm xử lý sự kiện add
     let date = inpDate.value.trim();
     let price = inpPrice.value.trim();
     if (!checkValid(name, firm, date, price)) {//Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với hàm tự tạo checkValid
-        alert("Nhập cho đủ vô");
+        alert("Nhập lại");
     } else {
         let newRow = dataTable.insertRow(-1);//Tạo 1 row vào thẻ table có id="dataTable" với vị trí -1 (vị trí cuối cùng)
         let cell1 = newRow.insertCell(0); //Tạo các thẻ <td></td>
@@ -44,52 +51,41 @@ function cancel() {//Xóa hết phần input
     inpDate.value="";
     inpPrice.value="";
 }
+
 //Hàm tự tạo check nhập đúng hay sai
 function checkValid(name, firm, date, price) {//Chưa nhập hoặc nhập ngày tháng sai hoặc giá nhập <= 0 thì trả về false
-    if (name=="" || firm=="" || date=="" || price=="" || !checkValidDate(date) || parseInt(price)<=0) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    if (name=="" || firm=="" || date=="" || price=="" || !checkValidDate(date) || parseInt(price)<=0) return false;
+    else return true;
 
 }
 
 function checkValidDate (d) {//Hàm check ngày tháng năm đúng hay ko
     let date = d.split("/");//Tách chuỗi gán biến ngày tháng năm
+    if (date.length!=3) return false;
     let dd = date[0], mm = date[1], yy = date[2];
     if (dd < 1 || mm < 1 || mm > 12 || yy < 1) return false;//Nhập sai thì trả về false
     var maxDay;//Biến ngày nhiều nhất của 1 tháng
-    if (mm == 4 || mm == 6 || mm == 9 || mm == 11) {
-        maxDay = 30;
-    } else if (mm == 2) {
-        if (checkLeapYear(yy)) {
-            maxDay = 29;
-        } else maxDay = 28;
+    if (mm == 4 || mm == 6 || mm == 9 || mm == 11) maxDay = 30;
+    else if (mm == 2) {
+        if (checkLeapYear(yy)) maxDay = 29;
+        else maxDay = 28;
     } else maxDay = 31; 
     //Check xem ngày nhập có hợp lệ hay lớn hơn ngày hiện tại ko
     if (dd <= maxDay) {
-        if (yy > 2023) {
-            return false;
-        } else if (yy == 2023) {
-            if (mm > 3) {
-                return false;
-            } else if (mm == 3) {
+        if (yy > 2023) return false;
+        else if (yy == 2023) {
+            if (mm > 3) return false;
+            else if (mm == 3) {
                 if (dd > 17) return false;
                 else return true;
             } else return true;
-        } else {
-            return true;
-        }
-    }
-    else return false;
+        } else return true;
+    } else return false;
 }
 
 function checkLeapYear (year) {//Hàm check năm nhuận
     if (year % 4 == 0) {
-        if (year % 100 == 0 && year % 400 != 0) {
-            return false;
-        }
+        if (year % 100 == 0 && year % 400 != 0) return false;
         else return true;
     } else return false;
 }
