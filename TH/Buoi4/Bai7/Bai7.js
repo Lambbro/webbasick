@@ -1,6 +1,6 @@
 //Đặt biến cho các nút và dữ liệu cần lấy cũng như đưa ra màn hình
 /*
-Ý tưởng: (Ctrl + Z để cắt dòng màn hình cho dễ nhìn )
+Ý tưởng: (Alt + Z để cắt dòng màn hình cho dễ nhìn )
 Tạo 1 mảng ban đầu chứa 1 dữ liệu là Intel, mỗi lần thêm 1 dữ liệu sẽ lấy từ input đưa vào mảng, check có tồn tại dữ liệu đấy chưa. Sau đó xóa hết phần tử con (thẻ option) của thẻ select và thêm lại theo mảng với dữ liệu đc thêm mới
 (Thay vì chống lặp mảng thì có thể sử dụng IndexOf để lấy ra phần tử đầu tiên và thêm vào thẻ option thay vì xóa hết thẻ option đi viết lại)
 */
