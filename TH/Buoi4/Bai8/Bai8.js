@@ -58,32 +58,35 @@ function checkValid(name, firm, date, price) {//Chưa nhập hoặc nhập ngày
     else return true;
 
 }
-
-function checkValidDate (d) {//Hàm check ngày tháng năm đúng hay ko
-    let date = d.split("/");//Tách chuỗi gán biến ngày tháng năm
-    if (date.length!=3) return false;
-    let dd = date[0], mm = date[1], yy = date[2];
-    if (dd < 1 || mm < 1 || mm > 12 || yy < 1) return false;//Nhập sai thì trả về false
-    var maxDay;//Biến ngày nhiều nhất của 1 tháng
+//Hàm check ngày nhập có hợp lệ không
+function checkValidDate (d) {
+    let date = d.split("/");//tách chuỗi ngày nhập
+    if (date.length!=3) return false;//kiểm tra nhập có ở dưới dạng date/month/year không
+    let dd = date[0], mm = date[1], yy = date[2];//gán biến cho ngày tháng và năm
+    if (dd < 1 || mm < 1 || mm > 12 || yy < 1 || !checkCurrentTime(dd,mm,yy)) return false;//check ngày nhập có hợp lệ hay ko
+    var maxDay;//tính số ngày tối đa của 1 tháng
     if (mm == 4 || mm == 6 || mm == 9 || mm == 11) maxDay = 30;
     else if (mm == 2) {
         if (checkLeapYear(yy)) maxDay = 29;
         else maxDay = 28;
     } else maxDay = 31; 
-    //Check xem ngày nhập có hợp lệ hay lớn hơn ngày hiện tại ko
-    if (dd <= maxDay) {
-        if (yy > 2023) return false;
-        else if (yy == 2023) {
-            if (mm > 3) return false;
-            else if (mm == 3) {
-                if (dd > 17) return false;
-                else return true;
-            } else return true;
-        } else return true;
+    if (dd <= maxDay) return true;//so sánh ngày nhập vào với ngày tối đa của tháng đó
+    else return false;
+}
+//Hàm check ngày nhập không cho nhập quá thời điểm hiện  tại
+function checkCurrentTime(dd,mm,yy) {
+    let curTime = new Date();
+    if (yy < curTime.getFullYear()) return true;
+    else if (yy == curTime.getFullYear()) {
+        if (mm < curTime.getMonth()+1) return true;
+        if (mm == curTime.getMonth()+1) {//getMonth() trả về là số tháng -1 (tháng 1 bắt đầu từ số 0 và tháng 12 là số 11)
+            if (dd <= curTime.getDate()) return true;
+                else return false;
+        } else return false;
     } else return false;
 }
-
-function checkLeapYear (year) {//Hàm check năm nhuận
+//Hàm check năm nhuận
+function checkLeapYear (year) {//năm nhuận là năm chia hết cho 4 hoặc 400 nhưng k chia hết cho 100
     if (year % 4 == 0) {
         if (year % 100 == 0 && year % 400 != 0) return false;
         else return true;
