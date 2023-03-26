@@ -107,7 +107,7 @@
                     "price": price
                 }
                 for (i=0;i<list.length;i++) {//Check nếu cùng 1 hãng mà đã tồn tại sản phẩm đó rồi thì thôi không thêm
-                    if (newCPU.firm.toLowerCase() == list[i].firm.toLowerCase() && newCPU.name.toLowerCase() == list[i].name.toLowerCase()) {
+                    if (newCPU.name.toLowerCase() == list[i].name.toLowerCase()) {
                         alert("Đã có thông tin về CPU này rồi");
                         return;
                     }
