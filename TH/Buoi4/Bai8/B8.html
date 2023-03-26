@@ -106,7 +106,7 @@
                     "date": date,
                     "price": price
                 }
-                for (i=0;i<list.length;i++) {//Check nếu cùng 1 hãng mà đã tồn tại sản phẩm đó rồi thì thôi không thêm
+                for (i=0;i<list.length;i++) {//Check sản phẩm đã tồn tại
                     if (newCPU.name.toLowerCase() == list[i].name.toLowerCase()) {
                         alert("Đã có thông tin về CPU này rồi");
                         return;
