@@ -132,7 +132,7 @@
         }
         //Hàm tự tạo check nhập đúng hay sai
         function checkValid(name, firm, date, price) {
-            if (name=="" || firm=="" || date=="" || price=="" || price<=0 || !validDate(inpDate.value)) return false;
+            if (name=="" || firm=="" || date=="" || price=="" || price<=0 || name==firm || !validDate(inpDate.value)) return false;
             else return true;
         }
         //Hàm kiểm tra xem ngày nhập vào có lớn hơn ngày hiện tại ko
