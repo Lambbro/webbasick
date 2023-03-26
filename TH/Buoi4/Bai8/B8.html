@@ -84,6 +84,7 @@
         Khi dữ liệu được nhập đúng thì tạo thêm 1 thẻ <tr> (table row) làm thẻ con của thẻ <table> vào cuối vị trí của các thẻ <tr>
         sau đó tạo các thẻ <td> tương ứng với số cột của bảng, add thêm class để chỉnh css cho thẻ và thêm dữ liệu nhập vào thẻ
         */
+        let list = [];
         let inpName = document.getElementById("cpuName");
         let inpFirm = document.getElementById("cpuFirm");
         let inpDate = document.getElementById("cpuDate");
@@ -99,29 +100,45 @@
             if (!checkValid(name, firm, date, price)) {//Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với hàm tự tạo checkValid
                 alert("Nhập lại");
             } else {
-                let newRow = dataTable.insertRow(-1);//Tạo 1 row vào thẻ table có id="dataTable" với vị trí -1 (vị trí cuối cùng)
-                let cell1 = newRow.insertCell(0);//Tạo các thẻ <td></td>
-                let cell2 = newRow.insertCell(1);
-                let cell3 = newRow.insertCell(2);
-                let cell4 = newRow.insertCell(3);
-                let cell5 = newRow.insertCell(4);
-                
-                cell1.classList.add("border-column");//Thêm class cho các thẻ td
-                cell2.classList.add("border-column");
-                cell3.classList.add("border-column");
-                cell4.classList.add("border-column");
-                cell5.classList.add("border-column");
-
-                cell1.innerHTML = row+1;//Đưa giá trị vào các thẻ td theo dữ liệu tương ứng
-                cell2.innerHTML = name;
-                cell3.innerHTML = firm;
-                cell4.innerHTML = formatDate(date);
-                cell5.innerHTML = price;
-
-                row++;//Tăng giá trị stt
-
-                cancel();
+                let newCPU = {//Tạo object CPU gồm các property nhập từ bàn phím
+                    "name": name,
+                    "firm": firm,
+                    "date": date,
+                    "price": price
+                }
+                for (i=0;i<list.length;i++) {//Check nếu cùng 1 hãng mà đã tồn tại sản phẩm đó rồi thì thôi không thêm
+                    if (newCPU.firm == list[i].firm && newCPU.name == list[i].name) {
+                        alert("Đã có thông tin về CPU này rồi");
+                        return;
+                    }
+                }
+                list.push(newCPU);//Đẩy sản phẩm vào mảng lưu trữ
+                addToScreen(name, firm, date, price);//Hiện thông tin sản phẩm
             }
+        }
+        //Hàm hiện thông tin sản phẩm lên màn hình
+        function addToScreen(name, firm, date, price) {
+            let newRow = dataTable.insertRow(-1);//Tạo 1 row vào thẻ table có id="dataTable" với vị trí -1 (vị trí cuối cùng)
+            let cell1 = newRow.insertCell(0);//Tạo các thẻ <td></td>
+            let cell2 = newRow.insertCell(1);
+            let cell3 = newRow.insertCell(2);
+            let cell4 = newRow.insertCell(3);
+            let cell5 = newRow.insertCell(4);
+            
+            cell1.classList.add("border-column");//Thêm class cho các thẻ td
+            cell2.classList.add("border-column");
+            cell3.classList.add("border-column");
+            cell4.classList.add("border-column");
+            cell5.classList.add("border-column");
+
+            cell1.innerHTML = row+1;//Đưa giá trị vào các thẻ td theo dữ liệu tương ứng
+            cell2.innerHTML = name;
+            cell3.innerHTML = firm;
+            cell4.innerHTML = formatDate(date);
+            cell5.innerHTML = price;
+
+            row++;//Tăng giá trị stt
+            cancel();
         }
 
         function cancel() {//Xóa hết phần input
@@ -132,7 +149,7 @@
         }
         //Hàm tự tạo check nhập đúng hay sai
         function checkValid(name, firm, date, price) {
-            if (name=="" || firm=="" || date=="" || price=="" || price<=0 || name==firm || !validDate(inpDate.value)) return false;
+            if (name=="" || firm=="" || date=="" || price=="" || price<=0|| !validDate(inpDate.value)) return false;
             else return true;
         }
         //Hàm kiểm tra xem ngày nhập vào có lớn hơn ngày hiện tại ko
