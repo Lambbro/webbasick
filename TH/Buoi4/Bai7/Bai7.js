@@ -22,6 +22,13 @@ function addCPU() {
             alert("Please type the right brand of the CPU");
             cpuInput.focus();
         } else {
+            for (i=0;i<list.length;i++) {//Dùng vòng for check xem mảng đã tồn tại phần tử input đó chưa
+                if (input.toLowerCase() == list[i].toLowerCase()) {//Check và thông báo nếu đã tồn tại hãng đó bất kể viết hoa hay thường
+                    alert("Already has that brand");
+                    cpuInput.focus();
+                    return;
+                }
+            }
             list.push(input);//Đẩy chuỗi vào trong mảng ban đầu
             list = Array.from(new Set(list));//Hàm from sẽ copy cả mảng này sang mảng mới và hàm Set loại các giá trị trùng.
             //Ở đây sẽ loại bỏ trùng lặp và copy lại vào chính mảng đấy nên sẽ đưa mảng có trùng lặp về mảng ko trùng lặp
