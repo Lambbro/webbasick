@@ -97,8 +97,21 @@
             let firm = inpFirm.value.trim();
             let date = inpDate.value;
             let price = inpPrice.value.trim();
-            if (!checkValid(name, firm, date, price)) {//Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với hàm tự tạo checkValid
-                alert("Nhập lại");
+            //Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với
+            if (!(checkValid(name,firm,date,price))){
+                let tb = "Nhập lại";
+                if (name=="") {
+                    tb+=" tên,";
+                } if (firm=="") {
+                    tb+=" hãng,";
+                } if (date=="" || !validDate(inpDate.value)) {
+                    tb+=" ngày,";
+                } if (price=="" || price <= 0) {
+                    tb+=" giá,";
+                }
+                tb=tb.substring(0,tb.length-1);
+                tb+=" của sản phẩm!!!";
+                alert(tb);//Thông báo nhập lại từng cái
             } else {
                 let newCPU = {//Tạo object CPU gồm các property nhập từ bàn phím
                     "name": name,
@@ -135,7 +148,7 @@
             cell2.innerHTML = name;
             cell3.innerHTML = firm;
             cell4.innerHTML = formatDate(date);
-            cell5.innerHTML = price;
+            cell5.innerHTML = formatPrice(price);
 
             row++;//Tăng giá trị stt
             cancel();
@@ -164,6 +177,15 @@
             let x = date.split("-");//Cắt "2023-3-26" -> ["2023","3","26"]
             [x[0], x[2]] = [x[2], x[0]];//Đổi chỗ ["2023","3","26"] -> ["26","3","2023"]
             return x.join("/");//Nối ["26","3","2023"] -> "26/3/2023"
+        }
+        //Định dạng giá
+        function formatPrice(price) {
+            let sPrice = price.toString();
+            for (i=sPrice.length-3;i>0;i-=3) {//Lặp ngược từ cuối và thêm chấm vào mỗi 3 số
+                sPrice = sPrice.slice(0, i) + "." + sPrice.slice(i, sPrice.length);//Cắt chuỗi từ đầu đến vị trí cần thêm "." và thêm chấm rồi lấy chuối nốt từ vị trí đấy đến hết
+                //Ví dụ 1000000 -> (lặp lần 1) : 1000 + "." + 000 -> (lặp lần 2) : 1 + "." +000.000
+            }
+            return sPrice;
         }
     </script>
 </body>
