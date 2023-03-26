@@ -78,69 +78,75 @@
     </style>
 
     <script>
+        /*
+        Ý tưởng:
+        Khi ấn thêm của bảng thứ 2 sẽ kiểm tra cả 4 dòng input, đúng dữ liệu nhập thì thêm vào ko thì hiện thông báo
+        Khi dữ liệu được nhập đúng thì tạo thêm 1 thẻ <tr> (table row) làm thẻ con của thẻ <table> vào cuối vị trí của các thẻ <tr>
+        sau đó tạo các thẻ <td> tương ứng với số cột của bảng, add thêm class để chỉnh css cho thẻ và thêm dữ liệu nhập vào thẻ
+        */
         let inpName = document.getElementById("cpuName");
         let inpFirm = document.getElementById("cpuFirm");
         let inpDate = document.getElementById("cpuDate");
         let inpPrice = document.getElementById("cpuPrice");
         let dataTable = document.getElementById("dataTable");
         let row = 0;
-
-        function add() {
+        //Hàm xử lý sự kiện add
+        function add() {//Lấy giá trị mình nhập vào
             let name = inpName.value.trim();
             let firm = inpFirm.value.trim();
             let date = inpDate.value;
             let price = inpPrice.value.trim();
-            if (!checkValid(name, firm, date, price)) {
+            if (!checkValid(name, firm, date, price)) {//Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với hàm tự tạo checkValid
                 alert("Nhập lại");
             } else {
-                let newRow = dataTable.insertRow(-1);
-                let cell1 = newRow.insertCell(0);
+                let newRow = dataTable.insertRow(-1);//Tạo 1 row vào thẻ table có id="dataTable" với vị trí -1 (vị trí cuối cùng)
+                let cell1 = newRow.insertCell(0);//Tạo các thẻ <td></td>
                 let cell2 = newRow.insertCell(1);
                 let cell3 = newRow.insertCell(2);
                 let cell4 = newRow.insertCell(3);
                 let cell5 = newRow.insertCell(4);
                 
-                cell1.classList.add("border-column");
+                cell1.classList.add("border-column");//Thêm class cho các thẻ td
                 cell2.classList.add("border-column");
                 cell3.classList.add("border-column");
                 cell4.classList.add("border-column");
                 cell5.classList.add("border-column");
 
-                cell1.innerHTML = row+1;
+                cell1.innerHTML = row+1;//Đưa giá trị vào các thẻ td theo dữ liệu tương ứng
                 cell2.innerHTML = name;
                 cell3.innerHTML = firm;
                 cell4.innerHTML = formatDate(date);
                 cell5.innerHTML = price;
 
-                row++;
+                row++;//Tăng giá trị stt
 
                 cancel();
             }
         }
 
-        function cancel() {
+        function cancel() {//Xóa hết phần input
             inpName.value="";
             inpFirm.value="";
             inpDate.value="";
             inpPrice.value="";
         }
-
+        //Hàm tự tạo check nhập đúng hay sai
         function checkValid(name, firm, date, price) {
             if (name=="" || firm=="" || date=="" || price=="" || price<=0 || !validDate(inpDate.value)) return false;
             else return true;
         }
-
+        //Hàm kiểm tra xem ngày nhập vào có lớn hơn ngày hiện tại ko
         function validDate(date) {
-            let now = new Date();
-            let timeCheck = new Date(date);
-            if (timeCheck.getTime() <= now.getTime()) return true;
+            let now = new Date();//Lấy thời gian hiện tại dưới dạng year-month-dat(ví dụ 2023-3-26)
+            let timeCheck = new Date(date);//Chuyển date thành dạng thời gian (đang ở dạng string khi input)
+            if (timeCheck.getTime() <= now.getTime()) return true;//.getTime() là hàm chuyển dạng thời gian về dạng mili giây và so sánh 2 thời gian nhập và hiện tại
             else return false;
         }
-
+        //Hàm chuyển thời gian hiện lên từ (2023-3-26) -> (26/3/2023)
         function formatDate(date) {
-            let x = date.split("-");
-            [x[0], x[2]] = [x[2], x[0]];
-            return x.join("/");
+            let x = date.split("-");//Cắt "2023-3-26" -> ["2023","3","26"]
+            [x[0], x[2]] = [x[2], x[0]];//Đổi chỗ ["2023","3","26"] -> ["26","3","2023"]
+            return x.join("/");//Nối ["26","3","2023"] -> "26/3/2023"
         }
     </script>
 </body>
