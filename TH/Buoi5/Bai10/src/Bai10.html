@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    #form {
+        width: fit-content;
+    }
+    .inputField {
+        display: flex;
+        flex-direction: column;
+    }
+    .inputContent {
+        margin: 8px 0;
+    }
+    #errorMessage {
+        color: red;
+        margin: 8px 0;
+        display: none;
+    }
+</style>
+<body>
+    <div class="content" style="margin-top: 180px; text-align: -webkit-center;">
+        <form action="Bai10.aspx" method="post" enctype="multipart/form-data" id="form" onsubmit="return checkValid()"><!--Làm việc với file phải có thêm enctype="multipart/form-data"-->
+                <div class="inputField">
+                    <textarea id="txtNoiDung" name="txtNoiDung" rows="7" cols="70"></textarea>
+                    <div class="inputContent"><input type="file" name="cFile" id="cFile"></div>
+                    <p id="errorMessage"></p>
+                    <div class="inputContent"><input type="submit" value="Submit"></div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+<script>
+    function checkValid() {//Check xem đã nhập text với chọn file chưa, nếu chưa thì hiện thông báo
+        let errorMsg = document.getElementById("errorMessage");
+        let text = document.getElementById("txtNoiDung").value;
+        let uploadedFile = document.getElementById("cFile").value;
+        if (text == "") {
+            errorMsg.innerHTML = "Mời nhập nội dung";
+            errorMsg.style.display = "block";
+            return false;
+        } else if (uploadedFile == "") {
+            errorMsg.innerHTML = "Mời chọn file";
+            errorMsg.style.display = "block";
+            return false;
+        } else {
+            alert("Uploading " + uploadedFile);
+            return true;
+        }
+    }
+</script>
+
+</html>
