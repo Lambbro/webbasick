@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="content">
+        <!-- Tạo form dùng get và link file xử lý = action, khi submit thì chạy qua hàm valid check xem nhập đúng hay chưa -->
         <form method="get" action="XuLyGet.aspx" id="cpuForm" onsubmit="return valid()">
             <div class="addData">
                 <table id="addDataTable" class="center">
@@ -91,9 +92,9 @@
                 tb = tb.substring(0, tb.length - 1);
                 tb += " của sản phẩm!!!";
                 alert(tb);//Thông báo nhập lại từng cái
-                return false;
+                return false;//nếu chưa nhập đúng trả về false và form sẽ ko được submit
             } else {
-                return true;
+                return true;//nếu nhập đúng rồi thì submit và chuyển sang file aspx
             }
         }
 
