@@ -1,0 +1,14 @@
+Từ buổi 5 trở đi sẽ học bằng Visual Studio
+--Cài đặt--
+Sau khi tải Visual Studio thì mở lên và cài đặt chọn ASP.NET and web development, bên tay ở Installation details - Optional chọn thêm .NET Framework project and item templates
+--Tạo project--
+Trên góc trái chọn File -> New -> Project
+Tìm mục ASP.NET Web Application (.NET Framework) bên dưới có C# (chứ ko phải Visual Basic)
+Ấn Next
+Đặt tên project, chọn save location và ấn Create
+Chọn Empty và tiếp tục ấn Create để tạo project
+--Tạo file--
+(Khuyến khích tạo 1 folder src và lưu các file mình sử dụng bên trong đấy riêng, ở đây sẽ tạo 1 file src hoặc src và lưu các file mà mình xử lý)
+Ở thanh Solution Explorer click chuột phải vào tên project
+Chọn add -> new item (html page = html, javascript file = js, style sheet = css, webform = aspx.net c#)
+Chỉnh tên file ở dòng dưới cùng và ấn add
