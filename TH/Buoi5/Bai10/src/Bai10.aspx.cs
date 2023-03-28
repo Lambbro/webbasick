@@ -16,7 +16,7 @@ namespace Bai10.src
 
             HttpPostedFile file = Request.Files["cFile"];//Lấy file đc post
             String cF = Request.Form["cFile"];
-            if (file == null) { Response.Write("<br>Lỗi file: " + cF); }//File khác null thì thông báo lỗi
+            if (file == null) { Response.Write("<br>Lỗi file: " + cF); }//File == null thì thông báo lỗi
             else
             {
                 file.SaveAs(Server.MapPath("../App_Data\\" + file.FileName));//Lưu file
