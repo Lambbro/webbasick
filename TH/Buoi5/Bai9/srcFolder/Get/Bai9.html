@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 9</title>
+</head>
+<body>
+    <div class="content">
+        <form method="get" action="XuLyGet.aspx" id="cpuForm" onsubmit="return valid()">
+            <div class="addData">
+                <table id="addDataTable" class="center">
+                    <tr>
+                        <td>Tên VXL</td>
+                        <td><input type="text" name="cpuName" id="cpuName"></td>
+                    </tr>
+                    <tr>
+                        <td>Hãng</td>
+                        <td><input type="text" name="cpuFirm" id="cpuFirm"></td>
+                    </tr>
+                    <tr>
+                        <td>Ngày ra mắt</td>
+                        <td><input type="date" name="cpuDate" id="cpuDate"></td>
+                    </tr>
+                    <tr>
+                        <td>Giá</td>
+                        <td><input type="number" name="cpuPrice" id="cpuPrice"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td dir="rtl">
+                            <input type="reset" value="Hủy" onclick="cancel()">
+                            <input type="submit" value="Thêm">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        table {
+            border: 1px solid #333;
+        }
+
+        .addData {
+            margin-top: 100px;
+            text-align: -webkit-center;
+        }
+
+        #addDataTable {
+            padding: 12px;
+        }
+    </style>
+
+    <script>
+        /*
+        Ý tưởng:
+        Khi ấn thêm của bảng thứ 2 sẽ kiểm tra cả 4 dòng input, đúng dữ liệu nhập thì thêm vào ko thì hiện thông báo
+        Khi dữ liệu được nhập đúng thì tạo thêm 1 thẻ <tr> (table row) làm thẻ con của thẻ <table> vào cuối vị trí của các thẻ <tr>
+        sau đó tạo các thẻ <td> tương ứng với số cột của bảng, add thêm class để chỉnh css cho thẻ và thêm dữ liệu nhập vào thẻ
+        */
+        let inpName = document.getElementById("cpuName");
+        let inpFirm = document.getElementById("cpuFirm");
+        let inpDate = document.getElementById("cpuDate");
+        let inpPrice = document.getElementById("cpuPrice");
+        let dataTable = document.getElementById("dataTable");
+        //Hàm xử lý sự kiện add
+        function valid() {//Lấy giá trị mình nhập vào
+            let name = inpName.value.trim();
+            let firm = inpFirm.value.trim();
+            let date = inpDate.value;
+            let price = inpPrice.value.trim();
+            //Nếu giá trị nhập ko thỏa mãn thì hiện thông báo với
+            if (!(checkValid(name, firm, date, price))) {
+                let tb = "Nhập lại";
+                if (name == "") {
+                    tb += " tên,";
+                } if (firm == "") {
+                    tb += " hãng,";
+                } if (date == "" || !validDate(inpDate.value)) {
+                    tb += " ngày,";
+                } if (price == "" || price <= 0) {
+                    tb += " giá,";
+                }
+                tb = tb.substring(0, tb.length - 1);
+                tb += " của sản phẩm!!!";
+                alert(tb);//Thông báo nhập lại từng cái
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function cancel() {//Xóa hết phần input
+            document.getElementById("cpuForm").reset;
+        }
+        //Hàm tự tạo check nhập đúng hay sai
+        function checkValid(name, firm, date, price) {
+            if (name == "" || firm == "" || date == "" || price == "" || price <= 0 || !validDate(inpDate.value)) return false;
+            else return true;
+        }
+        //Hàm kiểm tra xem ngày nhập vào có lớn hơn ngày hiện tại ko
+        function validDate(date) {
+            let now = new Date();//Lấy thời gian hiện tại dưới dạng year-month-dat(ví dụ 2023-3-26)
+            let timeCheck = new Date(date);//Chuyển date thành dạng thời gian (đang ở dạng string khi input)
+            if (timeCheck.getTime() <= now.getTime()) return true;//.getTime() là hàm chuyển dạng thời gian về dạng mili giây và so sánh 2 thời gian nhập và hiện tại
+            else return false;
+        }
+        //Hàm chuyển thời gian hiện lên từ (2023-3-26) -> (26/3/2023)
+        function formatDate(date) {
+            let x = date.split("-");//Cắt "2023-3-26" -> ["2023","3","26"]
+            [x[0], x[2]] = [x[2], x[0]];//Đổi chỗ ["2023","3","26"] -> ["26","3","2023"]
+            return x.join("/");//Nối ["26","3","2023"] -> "26/3/2023"
+        }
+        //Định dạng giá
+        function formatPrice(price) {
+            let sPrice = price.toString();
+            for (i = sPrice.length - 3; i > 0; i -= 3) {//Lặp ngược từ cuối và thêm chấm vào mỗi 3 số
+                sPrice = sPrice.slice(0, i) + "." + sPrice.slice(i, sPrice.length);//Cắt chuỗi từ đầu đến vị trí cần thêm "." và thêm chấm rồi lấy chuối nốt từ vị trí đấy đến hết
+                //Ví dụ 1000000 -> (lặp lần 1) : 1000 + "." + 000 -> (lặp lần 2) : 1 + "." +000.000
+            }
+            return sPrice;
+        }
+    </script>
+</body>
+</html>
