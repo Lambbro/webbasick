@@ -12,3 +12,5 @@ Chọn Empty và tiếp tục ấn Create để tạo project
 Ở thanh Solution Explorer click chuột phải vào tên project
 Chọn add -> new item (html page = html, javascript file = js, style sheet = css, webform = aspx.net c#)
 Chỉnh tên file ở dòng dưới cùng và ấn add
+--Lưu ý--
+Vì github chỉ để lưu folder có lượng file ít hoặc file nén <25mb nên sẽ có thêm link source file nén trên gg drive
