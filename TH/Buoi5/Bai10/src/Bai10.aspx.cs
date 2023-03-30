@@ -11,6 +11,7 @@ namespace Bai10.src
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack) {
             String txtNoidung = Request.Form["txtNoidung"];
             Response.Write("Content: " + txtNoidung);
 
@@ -22,6 +23,7 @@ namespace Bai10.src
                 file.SaveAs(Server.MapPath("../App_Data\\" + file.FileName));//Lưu file
             }
             Response.End();
+            }
         }
     }
 }
