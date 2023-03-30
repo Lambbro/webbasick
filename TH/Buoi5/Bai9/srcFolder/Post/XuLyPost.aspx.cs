@@ -15,10 +15,15 @@ namespace Bai9.srcFolder.Post
                 "<h2>CPU</h2>" +
                 "<br>Tên VXL: " + Request.Form["cpuName"] +
                 "<br>Hãng: " + Request.Form["cpuFirm"] +
-                "<br>Ngày SX: " + Request.Form["cpuDate"] +
+                "<br>Ngày SX: " + FormatDate(Request.Form["cpuDate"]) +
                 "<br>Giá: " + Request.Form["cpuPrice"];
             Response.Write(cpu);//Hiện chuỗi cpu lên web
             Response.End();//Kết thúc lệnh
+        }
+        string FormatDate(string date)
+        {
+            string[] dateArr = date.Split('-');
+            return dateArr[2] + '/' + dateArr[1] + '/' + dateArr[0];
         }
     }
 }
