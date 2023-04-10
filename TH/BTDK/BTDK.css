@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+.none-margin {
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+}
+
+.content {
+    width: fit-content;
+    margin: auto;
+}
+
+.sortArea {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.sortText {
+    margin: 0;
+}
+
+#sortSelection {
+    margin-left: 1rem;
+}
+
+.productTable, td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+}
+
+.paddingBox {
+    padding: 0.5rem 1rem;
+}
+
+.productName {
+    min-width: 20rem;
+}
+.productPrice {
+    min-width: 12rem;
+}
+.inputField {
+    margin: auto;
+    width: fit-content;
+}

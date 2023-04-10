@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="BTDK.css">
+    <title>Danh sách bán hàng</title>
+</head>
+<body>
+    <header class="header">
+        <h2 class="headTitle">Cửa hàng provjp</h2>
+    </header>
+        <div class="listField" id="listField" style="display: block;">
+            <main class="content">
+                <h4 class="header">Danh sách sản phẩm</h4>
+                <fieldset>
+                    <section class="sortArea">
+                        <p class="sortText">Sắp xếp:</p>
+                        <select name="sortSelection" id="sortSelection" onchange="sort();">
+                            <option value="name">Tên A-Z</option>
+                            <option value="lowerPrice">Giá thấp đến cao</option>
+                            <option value="higherPrice">Giá cao đến thấp</option>
+                        </select>
+                    </section>
+                    <section class="productList">
+                        <table class="productTable" id="productTable">
+                            <tr>
+                                <td class="productName paddingBox">Tên</td>
+                                <td class="productPrice paddingBox">Giá </td>
+                            </tr>
+                        </table>
+                    </section>
+                </fieldset>
+            </main>
+        </div>
+        <div class="inputField" id="inputField" style="display: none;">
+            <h4 class="header">Thêm sản phẩm</h4>
+            <fieldset>
+                <p class="none-margin">Tên sản phẩm:</p>
+                <input type="text" name="inpName" id="inpName">
+                <p class="none-margin">Giá sản phẩm:</p>
+                <input type="number" name="inpPrice" id="inpPrice">
+            </fieldset>
+        </div>
+    <div style="text-align: center; margin-top: 5rem;"><input type="button" value="Thêm" onclick="btnHandler();"></div>
+</body>
+<script src="./BTDK.js"></script>
+</html>
