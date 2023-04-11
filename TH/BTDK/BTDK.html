@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header">
-        <h2 class="headTitle">Cửa hàng provjp</h2>
+        <h2 class="headTitle">Shopee fake</h2>
     </header>
         <div class="listField" id="listField" style="display: block;">
             <main class="content">
@@ -37,13 +37,16 @@
         <div class="inputField" id="inputField" style="display: none;">
             <h4 class="header">Thêm sản phẩm</h4>
             <fieldset>
-                <p class="none-margin">Tên sản phẩm:</p>
+                <p class="inpTitle">Tên sản phẩm:</p>
                 <input type="text" name="inpName" id="inpName">
-                <p class="none-margin">Giá sản phẩm:</p>
+                <p class="inpTitle">Giá sản phẩm:</p>
                 <input type="number" name="inpPrice" id="inpPrice">
             </fieldset>
         </div>
-    <div style="text-align: center; margin-top: 5rem;"><input type="button" value="Thêm" onclick="btnHandler();"></div>
+    <div style="text-align: center; margin-top: 5rem;">
+        <input type="button" value="Thêm" onclick="btnHandler();">
+        <input type="button" value="Hủy" style="display: none;" id="btnCancel" onclick="cancel();">
+    </div>
 </body>
 <script src="./BTDK.js"></script>
 </html>

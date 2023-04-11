@@ -5,9 +5,6 @@
 html {
     font-size: 16px;
 }
-.none-margin {
-    margin: 0;
-}
 
 .header {
     text-align: center;
@@ -49,4 +46,7 @@ html {
 .inputField {
     margin: auto;
     width: fit-content;
+}
+.inpTitle {
+    margin: 0.5rem 0;
 }
