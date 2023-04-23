@@ -1,0 +1,129 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+html {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*Header*/
+.header {
+    width: 100%;
+}
+.navbar {
+    width: 100%;
+    border-bottom: 1px solid #333;
+    position: fixed;
+    top: 0;
+}
+.format-header {
+    display: flex;
+    height: 5rem;
+    width: 80%;
+    margin: auto;
+    justify-content:space-around;
+}
+.logo {
+    text-decoration: none;
+}
+.nav-left {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+}
+.navigator {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+}
+.nav-selector {
+    padding: 0 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+.nav-search {
+    display: flex;
+    align-items: center;
+}
+.searcher {
+    display: block;
+}
+.search-input {
+    height: 2rem;
+    padding: 0 0.5rem;
+    width: 20rem;
+    border-radius: 6rem;
+    box-shadow: none;
+}
+.nav-btn {
+    padding: 0 1.5rem;
+}
+.nav-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+/*Footer*/
+.footer {
+    border-top: 1px solid #333;
+    margin-bottom: 2rem;
+}
+.footer-top {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+.font-larger {
+    cursor: context-menu ;
+    font-size: larger;
+}
+.footer-body {
+    margin: 1rem 0;
+    cursor: pointer;
+}
+.social-img {
+    display: flex;
+}
+.social-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+}
+.footer-bot {
+    width: 70%;
+    margin: auto;
+}
+.fbot-head {
+    display: flex;
+    justify-content: space-between;
+}
+.fbot-head-right {
+    display: flex;
+}
+.blur-text {
+    font-weight: 400;
+    color: #7d7d7d;
+    font-size: 16px;
+    margin: 1rem 0;
+}
+.highline {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+/*Main Content*/
+main {
+    margin-top: 5rem;
+    height: 1000px;
+}
