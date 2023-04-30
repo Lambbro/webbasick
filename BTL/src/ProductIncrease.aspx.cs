@@ -7,23 +7,23 @@ using System.Web.UI.WebControls;
 
 namespace BTL.src
 {
-    public partial class Cart : System.Web.UI.Page
+    public partial class ProductIncrease : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Product> ProductCart = (List<Product>)Application["ProductCart"];
 
-            int sum = 0;
+            string id = Request.QueryString.Get("id");
 
             foreach (Product product in ProductCart)
             {
-                product.Total = product.Price*product.Quantity;
-                sum+= product.Total;
+                if (product.Id == int.Parse(id))
+                {
+                    product.Quantity++;
+                    Response.Redirect("Cart.aspx");
+                    break;
+                }
             }
-            cartList.DataSource = ProductCart;
-            cartList.DataBind();
-
-            TotalPrices.InnerHtml = $"{sum.ToString()}";
         }
     }
 }

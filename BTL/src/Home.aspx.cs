@@ -12,6 +12,7 @@ namespace BTL.src
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Product> ProductList = (List<Product>)Application["ProductList"];
+            List<Product> ProductCart = (List<Product>)Application["ProductCart"];
 
             List<Product> womenShirts = new List<Product>();
             List<Product> womenTrousers = new List<Product>();
@@ -61,6 +62,10 @@ namespace BTL.src
             Lipsticks.DataBind();
             Perfumes.DataSource = perfumes;
             Perfumes.DataBind();
+
+            int countProduct = ProductCart.Count;
+
+            CartCounter.InnerHtml = $"{countProduct}";
         }
     }
 }
