@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="cart" id="home">
+        <div id="cart">
         <!-- Header -->
             <header class="header">
                 <nav class="navbar">
