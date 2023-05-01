@@ -1,0 +1,281 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hover-red:hover {
+    color: red;
+}
+
+.border-bot {
+    border-bottom: 1px solid #333;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+/*Header*/
+.header {
+    width: 100%;
+}
+
+.logo-layer {
+    height: 100%;
+}
+
+.logo {
+    height: 100%;
+}
+
+.navbar {
+    width: 100%;
+    border-bottom: 1px solid #333;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+}
+
+.format-header {
+    display: flex;
+    height: 5rem;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.nav-left {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigator {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-selector {
+    padding: 1.8rem 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 100%;
+    min-width: fit-content;
+}
+
+    .nav-selector:hover {
+        color: black;
+        background-color: aliceblue;
+    }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-search {
+    display: flex;
+    align-items: center;
+}
+
+.searcher {
+    display: block;
+}
+
+.search-input {
+    height: 2rem;
+    padding: 0 0.5rem;
+    width: 20rem;
+    border-radius: 6rem;
+    box-shadow: none;
+}
+
+#search-result {
+    position: absolute;
+    margin-top: 1.55rem;
+    width: 20rem;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 1rem darkgrey;
+}
+
+.result {
+    padding: 0.5rem;
+    color: #000;
+}
+
+    .result:hover {
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+
+.nav-btn {
+    padding: 0 1.5rem;
+}
+
+.nav-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-counter {
+    color: black;
+    position: absolute;
+    border: 1px solid #333;
+    border-radius: 2rem;
+    text-align: center;
+    top: 1rem;
+    min-width: 1rem;
+    font-size: 12px;
+}
+/*Footer*/
+.footer {
+    border-top: 1px solid #333;
+    margin-bottom: 2rem;
+}
+
+.footer-top {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.font-larger {
+    cursor: auto;
+    font-size: larger;
+}
+
+.footer-body {
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.social-img {
+    display: flex;
+}
+
+.social-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+}
+
+.footer-bot {
+    width: 70%;
+    margin: auto;
+}
+
+.fbot-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fbot-head-right {
+    display: flex;
+}
+
+.blur-text {
+    font-weight: 400;
+    color: #7d7d7d;
+    font-size: 16px;
+    margin: 1rem 0;
+}
+
+.highlight {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+/*Main Content*/
+main {
+    margin-top: 7rem;
+    margin-bottom: 5rem;
+}
+
+.content {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    text-transform: uppercase;
+}
+.img-layer {
+    width: 50%;
+    text-align: center;
+}
+.product-img {
+    width: 60%;
+}
+.details-layer {
+    width: 50%;
+}
+.p-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+.p-id {
+    margin: 1rem 0;
+}
+.p-describe {
+    font-size: 16px;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.details-title {
+    border-bottom: 1px solid #333;
+}
+.details-content {
+    font-size: 20px;
+}
+.p-price {
+    font-size: 26px;
+    margin: 1rem 0;
+    color: red;
+}
+.picker {
+    display: flex;
+}
+.pick-box {
+    font-size: 12px;
+    padding: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #ccc;
+    margin: 1rem 1rem 1rem 0;
+}
+.pick-box:hover {
+    border: 1px solid #333;
+    cursor: pointer;
+}
+.purchase-layer {
+    display: flex;
+}
+.purchase {
+    border: 1px solid #343434;
+    width: 50%;
+    text-align: center;
+    margin: 1rem;
+    padding: 0.5rem;
+    margin-left: 0;
+    cursor: pointer;
+}
+.purchase:hover {
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+}
