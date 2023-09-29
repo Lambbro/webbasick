@@ -75,13 +75,7 @@
             strArr.push(...strs.filter((str) => {return str!="";}));//thêm vào mảng global (mảng này sẽ tồn tại các phần tử giống nhau)
             let outputArr = Array.from(new Set(strArr));//tạo 1 mảng khác gồm các phần tử khác nhau từ mảng global
             del();//xóa toàn bộ output ban đầu để hiển thị lại
-            for (i=0; i<outputArr.length; i++) {
-                let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
-                opt.setAttribute("value", outputArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value="outputArr[i]"></option>
-                let item = document.createTextNode(outputArr[i]);
-                opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="outputArr[i]">outputArr[i]</option>
-                document.getElementById("selecter").appendChild(opt);//đưa thẻ vừa tạo vào thẻ <select> tạo thành 1 dropdown list
-            }
+            ResetList(outputArr);
         }
     }
 
@@ -92,6 +86,17 @@
     function cancel() {
         strArr = [];
         del();
+    }
+
+    function ResetList(outputArr) {
+        outputArr.sort();
+        for (i=0; i<outputArr.length; i++) {
+            let opt = document.createElement("option");//createElement("option") trong js tương đương với tạo 1 thẻ <option></option>
+            opt.setAttribute("value", outputArr[i]);//thêm thuộc tính vào element vừa tạo là value="string array vị trí i" => <option value="outputArr[i]"></option>
+            let item = document.createTextNode(outputArr[i]);
+            opt.appendChild(item);//thêm text note vào thẻ option (nằm giữa 2 dấu > và <) => <option value ="outputArr[i]">outputArr[i]</option>
+            document.getElementById("selecter").appendChild(opt);//đưa thẻ vừa tạo vào thẻ <select> tạo thành 1 dropdown list
+        }
     }
 
     const del = () => {
