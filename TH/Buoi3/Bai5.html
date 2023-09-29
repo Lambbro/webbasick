@@ -71,8 +71,8 @@
             str1.focus();
         } else {
             let strs = str2.split(","); //tách biến string thành một mảng string ngăn cách nhau bới dấu "," |VD: A, B, C => {A, B, C} với A B C thành các string độc lập
-            strArr2 = strs.filter((str) => {return str!="";})//tạo 1 mảng loại các phần tử rỗng ("")
-            strArr.push(...strArr2);//thêm vào mảng global (mảng này sẽ tồn tại các phần tử giống nhau)
+            strArr2 = //tạo 1 mảng loại các phần tử rỗng ("")
+            strArr.push(...strs.filter((str) => {return str!="";}));//thêm vào mảng global (mảng này sẽ tồn tại các phần tử giống nhau)
             let outputArr = Array.from(new Set(strArr));//tạo 1 mảng khác gồm các phần tử khác nhau từ mảng global
             del();//xóa toàn bộ output ban đầu để hiển thị lại
             for (i=0; i<outputArr.length; i++) {
